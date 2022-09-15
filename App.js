@@ -1,12 +1,38 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import tw from 'twrnc';
+import { StatusBar } from "expo-status-bar";
+import tw from "twrnc";
+import * as React from "react";
+import { View, Text } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import LoginScreen from "./screens/Login";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+
+// Keep the splash screen visible while we fetch resources
+SplashScreen.preventAutoHideAsync();
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  return (
-    <View style={tw`flex-1 mt-8 justify-center items-center bg-[#1E1F28]`}>
-      <Text style={tw`text-white`}>Open up App.js to start working app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    const [loaded] = useFonts({
+        Inter: require("./assets/fonts/Inter-Thin.ttf"),
+    });
+
+    const onLayoutRootView = React.useCallback(async () => {
+        if (loaded) {
+            await SplashScreen.hideAsync();
+        }
+    }, [loaded]);
+
+    if (!loaded) {
+        return null;
+    }
+
+    return (
+        <NavigationContainer onReady={onLayoutRootView}>
+            <Stack.Navigator>
+                <Stack.Screen name="Login" component={LoginScreen} />
+            </Stack.Navigator>
+        </NavigationContainer>
+    );
 }
