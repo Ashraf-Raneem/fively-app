@@ -16,7 +16,7 @@ const RegisterScreen = ({ navigation }) => {
 
     return (
         <View style={globalPublicStyles}>
-            <Ionicons name="chevron-back" size={32} color="white" style={tw`m-2`} />
+            <Ionicons name="chevron-back" size={32} color="white" style={tw`m-2`} onPress={() => navigation.goBack()} />
             <View style={tw`mt-4 ml-4`}>
                 <AuthHeader name={"Register"} />
             </View>

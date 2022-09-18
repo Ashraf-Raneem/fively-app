@@ -8,6 +8,7 @@ import LoginScreen from "./screens/Login";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import RegisterScreen from "./screens/Register";
+import ForgotPassword from "./screens/ForgotPassword";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -34,6 +35,7 @@ export default function App() {
             <Stack.Navigator initialRouteName="Register">
                 <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="Forgot_Password" component={ForgotPassword} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

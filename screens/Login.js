@@ -16,7 +16,7 @@ const LoginScreen = ({ navigation }) => {
 
     return (
         <View style={globalPublicStyles}>
-            <Ionicons name="chevron-back" size={32} color="white" style={tw`m-2`} />
+            <Ionicons name="chevron-back" size={32} color="white" style={tw`m-2`} onPress={() => navigation.goBack()} />
             <View style={tw`mt-4 ml-4`}>
                 <AuthHeader name={"Login"} />
             </View>
@@ -37,7 +37,7 @@ const LoginScreen = ({ navigation }) => {
                     />
                 </View>
                 <View style={tw`flex flex-row items-center text-right self-end mr-12`}>
-                    <Text style={tw`text-sm text-white mr-1`} onPress={() => navigation.navigate("Register")}>
+                    <Text style={tw`text-sm text-white mr-1`} onPress={() => navigation.navigate("Forgot_Password")}>
                         Forgot password
                     </Text>
                     <MaterialIcons name="arrow-right-alt" size={24} color={primary} />
