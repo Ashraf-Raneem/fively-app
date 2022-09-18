@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import LoginScreen from "./screens/Login";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import RegisterScreen from "./screens/Register";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -30,8 +31,9 @@ export default function App() {
 
     return (
         <NavigationContainer onReady={onLayoutRootView}>
-            <Stack.Navigator>
-                <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Navigator initialRouteName="Register">
+                <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );
