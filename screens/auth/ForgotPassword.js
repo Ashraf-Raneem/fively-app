@@ -1,10 +1,10 @@
-import AuthHeader from "../components/authHeader/authHeader";
+import AuthHeader from "../../components/authHeader/authHeader";
 import { TextInput, Alert, View, Text } from "react-native";
-import { globalPublicStyles } from "../styles/global";
+import { globalPublicStyles } from "../../styles/global";
 import tw from "twrnc";
 import { Ionicons, Entypo, AntDesign } from "@expo/vector-icons";
-import Button from "../components/button/Button";
-import { dark, error, primary, success } from "../styles/colors";
+import Button from "../../components/button/Button";
+import { dark, error, primary, success } from "../../styles/colors";
 
 const ForgotPassword = ({ navigation }) => {
     const onSubmit = () => {
