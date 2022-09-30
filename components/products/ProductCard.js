@@ -2,6 +2,7 @@ import { View, Text, ImageBackground } from "react-native";
 import tw from "twrnc";
 import { gray, dark, primary, white } from "../../styles/colors";
 import { Entypo } from "@expo/vector-icons";
+import { AirbnbRating } from "react-native-ratings";
 
 const ProductCard = (props) => {
     const { product } = props;
@@ -30,7 +31,11 @@ const ProductCard = (props) => {
                     </View>
                 </View>
             </View>
-            <View style={tw`flex flex-col text-left ml-2 mt-2`}>
+            <View style={tw`flex flex-col text-left ml-2 mt-1`}>
+                <View style={tw`mt-2 flex flex-row`}>
+                    <AirbnbRating defaultRating={rating} count={5} size={12} showRating={false} isDisabled />
+                    <Text style={tw`text-[${gray}] text-sm`}>({rating})</Text>
+                </View>
                 <Text style={tw`text-[${gray}] text-xs`}>{company}</Text>
                 <Text style={tw`text-white text-xl`}>{name}</Text>
                 {discountedPrice ? (

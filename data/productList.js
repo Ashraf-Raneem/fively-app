@@ -2,6 +2,10 @@ import ProductA from "../assets/images/product/white_tshirt_prod.png";
 import ProductB from "../assets/images/product/denim_shirt_prod.png";
 import ProductC from "../assets/images/product/female_white_tshirt.png";
 import ProductD from "../assets/images/product/female_white_tshirt_black.png";
+import ProductE from "../assets/images/product/grey_shirt_prod.png";
+import ProductF from "../assets/images/product/pink_frock_prod.png";
+import ProductG from "../assets/images/product/black_shirt_prod.png";
+import ProductH from "../assets/images/product/long_sleeve_violetta_prod.png";
 import { dark, primary } from "../styles/colors";
 
 export const productList = [
@@ -26,6 +30,10 @@ export const productList = [
         id: 2,
         name: "Denim Shirt",
         image: ProductB,
+        tag: {
+            value: "new",
+            tagColor: dark,
+        },
         rating: 10,
         company: "LIME",
         size: "L",
@@ -40,8 +48,8 @@ export const productList = [
         name: "Plain White T's",
         image: ProductC,
         tag: {
-            value: "-20%",
-            tagColor: primary,
+            value: "new",
+            tagColor: dark,
         },
         rating: 6,
         company: "Doroth Perkins",
@@ -54,10 +62,10 @@ export const productList = [
     },
     {
         id: 4,
-        name: "",
+        name: "White Pronto T",
         image: ProductD,
         tag: {
-            value: "New",
+            value: "new",
             tagColor: dark,
         },
         rating: 0,
@@ -68,5 +76,73 @@ export const productList = [
         discountedPrice: null,
         outOfStock: false,
         liked: false,
+    },
+    {
+        id: 5,
+        name: "Grey Shirt",
+        image: ProductE,
+        tag: {
+            value: "-10%",
+            tagColor: primary,
+        },
+        rating: 0,
+        company: "Olivier",
+        size: "M",
+        color: "White",
+        price: 12,
+        discountedPrice: 10,
+        outOfStock: false,
+        liked: false,
+    },
+    {
+        id: 6,
+        name: "Evening Dress",
+        image: ProductF,
+        tag: {
+            value: "-13%",
+            tagColor: primary,
+        },
+        rating: 0,
+        company: "Dorothy Perkins",
+        size: "M",
+        color: "Pink",
+        price: 14,
+        discountedPrice: 12,
+        outOfStock: false,
+        liked: false,
+    },
+    {
+        id: 7,
+        name: "Black Shirt",
+        image: ProductG,
+        tag: {
+            value: "-18%",
+            tagColor: primary,
+        },
+        rating: 3,
+        company: "&Berries",
+        size: "M",
+        color: "Black",
+        price: 24,
+        discountedPrice: 12,
+        outOfStock: false,
+        liked: false,
+    },
+    {
+        id: 8,
+        name: "White Pronto T",
+        image: ProductH,
+        tag: {
+            value: "-50%",
+            tagColor: primary,
+        },
+        rating: 4,
+        company: "Longsleeve Violeta",
+        size: "M",
+        color: "Orange",
+        price: 17,
+        discountedPrice: 14,
+        outOfStock: false,
+        liked: true,
     },
 ];
