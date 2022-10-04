@@ -1,6 +1,4 @@
-import { View, Text, ImageBackground, ScrollView } from "react-native";
-import Navbar from "../../components/navbar/Navbar";
-import { globalStyle } from "../../styles/global";
+import { View, Text, ImageBackground } from "react-native";
 import tw from "twrnc";
 import CoverImage from "../../assets/images/cover-main.png";
 import Button from "../../components/button/Button";
@@ -10,7 +8,7 @@ import { productList } from "../../data/productList";
 import Slick from "react-native-slick";
 import AuthenticatedLayout from "../../layout/AuthenticatedLayout";
 
-const CoverMain = () => {
+const CoverMain = ({ navigation }) => {
     return (
         <AuthenticatedLayout page="home">
             <View>

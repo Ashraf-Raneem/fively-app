@@ -49,7 +49,7 @@ const RegisterScreen = ({ navigation }) => {
                     </Text>
                     <MaterialIcons name="arrow-right-alt" size={24} color={primary} />
                 </View>
-                <Button name={"Login"} onPress={onSubmit} />
+                <Button name={"Register"} onPress={onSubmit} />
             </View>
             <Text style={tw`text-white text-base mt-12 text-center mb-8`}>Or Register with social account</Text>
             <View style={tw`flex flex-row justify-center mb-22`}>

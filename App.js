@@ -1,20 +1,23 @@
-import { StatusBar } from "expo-status-bar";
 import tw from "twrnc";
 import * as React from "react";
 import { View, Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import LoginScreen from "./screens/auth/Login";
 import RegisterScreen from "./screens/auth/Register";
 import ForgotPassword from "./screens/auth/ForgotPassword";
-import CoverMain from "./screens/landing/CoverMain";
+import { dark, primary, gray } from "./styles/colors";
+import { routes } from "./routes/Route";
+import { Ionicons } from "@expo/vector-icons";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
 
 const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default function App() {
     const [loaded] = useFonts({
@@ -31,13 +34,65 @@ export default function App() {
         return null;
     }
 
+    const TabTitle = ({ focused, title }) => {
+        return <Text style={tw`text-[${focused ? primary : gray}] text-xs mb-1`}>{title}</Text>;
+    };
+
+    const Header = (props) => {
+        return (
+            <View style={tw`flex flex-row justify-between items-center h-18 pt-6 bg-[${dark}]`}>
+                <Ionicons
+                    name="arrow-back"
+                    size={24}
+                    color="white"
+                    style={tw`ml-2`}
+                    onPress={() => props.navigation.goBack()}
+                />
+                <Text style={tw`text-lg text-white`}>{props.title}</Text>
+                <Ionicons name="search" size={24} color="white" style={tw`mr-2`} />
+            </View>
+        );
+    };
+
+    const TabNavigator = () => {
+        return (
+            <Tab.Navigator
+                screenOptions={{
+                    tabBarStyle: {
+                        backgroundColor: dark,
+                        borderColor: dark,
+                        borderTopColor: dark,
+                        borderTopLeftRadius: 14,
+                        borderTopRightRadius: 14,
+                        paddingVertical: 4,
+                        height: 50,
+                        position: "absolute",
+                    },
+                    header: ({ navigation, route, options }) => <Header title={route.name} navigation={navigation} />,
+                }}
+            >
+                {Object.keys(routes).map((item, index) => (
+                    <Tab.Screen
+                        name={routes[item].title}
+                        component={routes[item].component}
+                        options={{
+                            ...routes[item].options,
+                            tabBarLabel: ({ focused }) => <TabTitle focused={focused} title={routes[item].title} />,
+                            tabBarIcon: ({ focused }) => routes[item].icon(focused),
+                        }}
+                    />
+                ))}
+            </Tab.Navigator>
+        );
+    };
+
     return (
         <NavigationContainer onReady={onLayoutRootView}>
             <Stack.Navigator initialRouteName="Register">
                 <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="Forgot_Password" component={ForgotPassword} options={{ headerShown: false }} />
-                <Stack.Screen name="Home" component={CoverMain} options={{ headerShown: false }} />
+                <Stack.Screen name="Home" component={TabNavigator} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     );
