@@ -1,4 +1,3 @@
-import Navbar from "../components/navbar/Navbar";
 import { globalStyle } from "../styles/global";
 
 const { View, ScrollView } = require("react-native");
