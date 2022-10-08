@@ -4,7 +4,7 @@ import tw from "twrnc";
 const AuthHeader = ({ name }) => {
     return (
         <View>
-            <Text style={tw`text-5xl font-base text-white`}>{name}</Text>
+            <Text style={tw`text-5xl text-white`}>{name}</Text>
         </View>
     );
 };

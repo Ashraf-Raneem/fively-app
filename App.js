@@ -1,6 +1,6 @@
 import tw from "twrnc";
 import * as React from "react";
-import { View, Text } from "react-native";
+import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -11,7 +11,8 @@ import RegisterScreen from "./screens/auth/Register";
 import ForgotPassword from "./screens/auth/ForgotPassword";
 import { dark, primary, gray } from "./styles/colors";
 import { routes } from "./routes/Route";
-import { Ionicons } from "@expo/vector-icons";
+import Header from "./components/header/Header";
+import FilterScreen from "./screens/filter/Filter";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -38,22 +39,6 @@ export default function App() {
         return <Text style={tw`text-[${focused ? primary : gray}] text-xs mb-1`}>{title}</Text>;
     };
 
-    const Header = (props) => {
-        return (
-            <View style={tw`flex flex-row justify-between items-center h-18 pt-6 bg-[${dark}]`}>
-                <Ionicons
-                    name="arrow-back"
-                    size={24}
-                    color="white"
-                    style={tw`ml-2`}
-                    onPress={() => props.navigation.goBack()}
-                />
-                <Text style={tw`text-lg text-white`}>{props.title}</Text>
-                <Ionicons name="search" size={24} color="white" style={tw`mr-2`} />
-            </View>
-        );
-    };
-
     const TabNavigator = () => {
         return (
             <Tab.Navigator
@@ -73,6 +58,7 @@ export default function App() {
             >
                 {Object.keys(routes).map((item, index) => (
                     <Tab.Screen
+                        key={index}
                         name={routes[item].title}
                         component={routes[item].component}
                         options={{
@@ -93,6 +79,11 @@ export default function App() {
                 <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="Forgot_Password" component={ForgotPassword} options={{ headerShown: false }} />
                 <Stack.Screen name="Home" component={TabNavigator} options={{ headerShown: false }} />
+                <Stack.Screen
+                    name="Filter"
+                    component={FilterScreen}
+                    options={{ header: ({ navigation }) => <Header title={"Filter"} navigation={navigation} /> }}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );

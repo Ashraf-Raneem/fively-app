@@ -10,8 +10,8 @@ const Categories = ({ navigation }) => {
         <AuthenticatedLayout page="Categories">
             <SummerSaleBanner />
             <View style={tw`flex flex-col`}>
-                {categoryList.map((item) => (
-                    <TouchableWithoutFeedback onPress={() => navigation.navigate("ProductList")}>
+                {categoryList.map((item, index) => (
+                    <TouchableWithoutFeedback key={index} onPress={() => navigation.navigate("ProductList")}>
                         <View key={item.id} style={tw`mx-2 my-4 flex flex-row justify-between rounded-xl bg-[${dark}]`}>
                             <Text style={tw`self-center text-[${white}] text-lg ml-4`}>{item.name}</Text>
                             <Image source={item.image} />

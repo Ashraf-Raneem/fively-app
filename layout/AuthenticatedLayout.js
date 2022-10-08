@@ -1,12 +1,19 @@
 import { globalStyle } from "../styles/global";
-
-const { View, ScrollView } = require("react-native");
+import BottomSheet from "react-native-simple-bottom-sheet";
+import { View, Text, ScrollView } from "react-native";
+import { useRef } from "react";
 
 const AuthenticatedLayout = (props) => {
     const { page, navigation, children } = props;
+    const panelRef = useRef(null);
     return (
         <View style={globalStyle}>
             <ScrollView>{children}</ScrollView>
+            <BottomSheet isOpen={false} ref={(ref) => (panelRef.current = ref)} sliderMinHeight={0}>
+                <View>
+                    <Text>Drawer Data</Text>
+                </View>
+            </BottomSheet>
         </View>
     );
 };
