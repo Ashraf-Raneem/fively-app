@@ -2,7 +2,7 @@ import { useState, useCallback } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import RangeSlider from "rn-range-slider";
 import tw from "twrnc";
-import { primary, white } from "../../styles/colors";
+import { primary, white } from "../../../styles/colors";
 
 const THUMB_RADIUS_LOW = 12;
 const THUMB_RADIUS_HIGH = 16;
