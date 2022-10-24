@@ -14,7 +14,7 @@ const ProductList = ({ navigation }) => {
             <View style={tw`flex flex-row flex-wrap justify-evenly mb-12 w-full`}>
                 {productList.map((item, index) => (
                     <View key={index}>
-                        <ProductCard product={item} />
+                        <ProductCard product={item} navigation={navigation} />
                     </View>
                 ))}
             </View>

@@ -13,6 +13,8 @@ import { dark, primary, gray } from "./styles/colors";
 import { routes } from "./routes/Route";
 import Header from "./components/header/Header";
 import FilterScreen from "./screens/filter/Filter";
+import ProductDetails from "./screens/productDetails/ProductDetails";
+import { Entypo, Ionicons, FontAwesome, AntDesign, MaterialIcons } from "@expo/vector-icons";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -22,6 +24,11 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
     const [loaded] = useFonts({
+        ...Ionicons.font,
+        ...FontAwesome.font,
+        ...AntDesign.font,
+        ...Entypo.font,
+        ...MaterialIcons.font,
         Inter: require("./assets/fonts/Inter-Thin.ttf"),
     });
 
@@ -83,6 +90,13 @@ export default function App() {
                     name="Filter"
                     component={FilterScreen}
                     options={{ header: ({ navigation }) => <Header title={"Filter"} navigation={navigation} /> }}
+                />
+                <Stack.Screen
+                    name="ProductDetails"
+                    component={ProductDetails}
+                    options={{
+                        header: ({ navigation }) => <Header title={"Product Details"} navigation={navigation} />,
+                    }}
                 />
             </Stack.Navigator>
         </NavigationContainer>

@@ -1,15 +1,15 @@
-import { View, Text, ImageBackground } from "react-native";
+import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
 import tw from "twrnc";
 import { gray, dark, primary, white } from "../../styles/colors";
 import { Entypo } from "@expo/vector-icons";
 import { AirbnbRating } from "react-native-ratings";
 
 const ProductCard = (props) => {
-    const { product } = props;
+    const { product, navigation } = props;
     const { image, name, tag, rating, company, discountedPrice, price, liked, outOfStock } = product;
     return (
         <View style={tw`w-[162px] my-4`}>
-            <View>
+            <TouchableOpacity onPress={() => navigation.navigate("ProductDetails")}>
                 <ImageBackground
                     source={image}
                     resizeMode="cover"
@@ -30,7 +30,7 @@ const ProductCard = (props) => {
                         <Entypo name="heart-outlined" size={18} color={liked ? white : gray} />
                     </View>
                 </View>
-            </View>
+            </TouchableOpacity>
             <View style={tw`flex flex-col text-left ml-2 mt-1`}>
                 <View style={tw`mt-2 flex flex-row`}>
                     <AirbnbRating defaultRating={rating} count={5} size={12} showRating={false} isDisabled />
