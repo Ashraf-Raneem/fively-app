@@ -1,6 +1,6 @@
-import ReviewA from "../assets/images/avatars/review-avatar-1";
-import ReviewB from "../assets/images/avatars/review-avatar-2";
-import ReviewC from "../assets/images/avatars/review-avatar-3";
+import ReviewA from "../assets/images/avatars/review-avatar-1.png";
+import ReviewB from "../assets/images/avatars/review-avatar-2.png";
+import ReviewC from "../assets/images/avatars/review-avatar-3.png";
 
 export const reviewList = [
     {

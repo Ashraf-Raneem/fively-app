@@ -38,12 +38,12 @@ const CoverMain = ({ navigation }) => {
                     activeDotColor={primary}
                 >
                     <View style={tw`flex flex-row justify-between`}>
-                        <ProductCard product={productList[0]} />
-                        <ProductCard product={productList[1]} />
+                        <ProductCard navigation={navigation} product={productList[0]} />
+                        <ProductCard navigation={navigation} product={productList[1]} />
                     </View>
                     <View style={tw`flex flex-row justify-between`}>
-                        <ProductCard product={productList[2]} />
-                        <ProductCard product={productList[3]} />
+                        <ProductCard navigation={navigation} product={productList[2]} />
+                        <ProductCard navigation={navigation} product={productList[3]} />
                     </View>
                 </Slick>
             </View>
@@ -66,12 +66,12 @@ const CoverMain = ({ navigation }) => {
                     activeDotColor={primary}
                 >
                     <View style={tw`flex flex-row justify-between`}>
-                        <ProductCard product={productList[4]} />
-                        <ProductCard product={productList[5]} />
+                        <ProductCard navigation={navigation} product={productList[4]} />
+                        <ProductCard navigation={navigation} product={productList[5]} />
                     </View>
                     <View style={tw`flex flex-row justify-between`}>
-                        <ProductCard product={productList[6]} />
-                        <ProductCard product={productList[7]} />
+                        <ProductCard navigation={navigation} product={productList[6]} />
+                        <ProductCard navigation={navigation} product={productList[7]} />
                     </View>
                 </Slick>
             </View>

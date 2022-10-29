@@ -9,6 +9,7 @@ import * as SplashScreen from "expo-splash-screen";
 import LoginScreen from "./screens/auth/Login";
 import RegisterScreen from "./screens/auth/Register";
 import ForgotPassword from "./screens/auth/ForgotPassword";
+import Review from "./screens/reviews/Review";
 import { dark, primary, gray } from "./styles/colors";
 import { routes } from "./routes/Route";
 import Header from "./components/header/Header";
@@ -96,6 +97,13 @@ export default function App() {
                     component={ProductDetails}
                     options={{
                         header: ({ navigation }) => <Header title={"Product Details"} navigation={navigation} />,
+                    }}
+                />
+                <Stack.Screen
+                    name="Review"
+                    component={Review}
+                    options={{
+                        header: ({ navigation }) => <Header title={"Ratings and Reviews"} navigation={navigation} />,
                     }}
                 />
             </Stack.Navigator>

@@ -4,11 +4,11 @@ import { View, Text, ScrollView } from "react-native";
 import { useRef } from "react";
 
 const AuthenticatedLayout = (props) => {
-    const { page, navigation, children } = props;
+    const { page, navigation, children, stickyArray } = props;
     const panelRef = useRef(null);
     return (
         <View style={globalStyle}>
-            <ScrollView>{children}</ScrollView>
+            <ScrollView stickyHeaderIndices={stickyArray ? stickyArray : []}>{children}</ScrollView>
             <BottomSheet isOpen={false} ref={(ref) => (panelRef.current = ref)} sliderMinHeight={0}>
                 <View>
                     <Text>Drawer Data</Text>
