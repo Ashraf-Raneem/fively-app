@@ -5,6 +5,7 @@ import Header from "../components/header/Header";
 import CoverMain from "../screens/landing/CoverMain";
 import Categories from "../screens/categories/Categories";
 import ProductList from "../screens/productList/ProductList";
+import Favourite from "../screens/favourite/Favourite";
 
 const Stack = createNativeStackNavigator();
 
@@ -46,9 +47,12 @@ export const routes = {
     },
     Favourite: {
         title: "Favourite",
-        component: Categories,
+        component: Favourite,
         icon: (focused) => <Entypo name="heart-outlined" size={20} color={focused ? primary : "white"} />,
-        options: { headerShown: false },
+        options: {
+            headerShown: true,
+            header: ({ navigation, route, options }) => <Header title={route.name} navigation={navigation} />,
+        },
         children: {},
     },
     Account: {

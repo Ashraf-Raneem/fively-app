@@ -5,7 +5,7 @@ import { Entypo } from "@expo/vector-icons";
 import { AirbnbRating } from "react-native-ratings";
 
 const ProductCard = (props) => {
-    const { product, navigation } = props;
+    const { product, navigation, cartButton } = props;
     const { image, name, tag, rating, company, discountedPrice, price, liked, outOfStock } = product;
     return (
         <View style={tw`w-[162px] my-4`}>
@@ -22,13 +22,23 @@ const ProductCard = (props) => {
                     )}
                 </ImageBackground>
                 <View style={tw`absolute right-0 bottom-0 z-40`}>
-                    <View
-                        style={tw`relative top-5 flex justify-center items-center bg-[${
-                            liked ? primary : dark
-                        }] rounded-full w-12 h-12`}
-                    >
-                        <Entypo name="heart-outlined" size={18} color={liked ? white : gray} />
-                    </View>
+                    {cartButton ? (
+                        <View
+                            style={tw`relative top-5 flex justify-center items-center bg-[${
+                                liked ? primary : dark
+                            }] rounded-full w-12 h-12`}
+                        >
+                            <Entypo name="shopping-bag" size={20} color={liked ? white : gray} />
+                        </View>
+                    ) : (
+                        <View
+                            style={tw`relative top-5 flex justify-center items-center bg-[${
+                                liked ? primary : dark
+                            }] rounded-full w-12 h-12`}
+                        >
+                            <Entypo name="heart-outlined" size={18} color={liked ? white : gray} />
+                        </View>
+                    )}
                 </View>
             </TouchableOpacity>
             <View style={tw`flex flex-col text-left ml-2 mt-1`}>

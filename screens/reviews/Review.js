@@ -12,6 +12,7 @@ import { globalStyle } from "../../styles/global";
 import RBSheet from "react-native-raw-bottom-sheet";
 import { useRef } from "react";
 import ReviewForm from "../../components/forms/ReviewForm";
+import BottomDrawer from "../../components/bottomDrawer/BottomDrawer";
 
 const Review = (props) => {
     const { rating } = productList[0];
@@ -113,7 +114,10 @@ const Review = (props) => {
                 <MaterialIcons name="edit" size={18} color={white} style={tw`mr-2`} />
                 <Text style={tw`text-[${white}] text-base`}>Write a review</Text>
             </TouchableOpacity>
-            <RBSheet
+            <BottomDrawer drawerRef={refRBSheet} height={400}>
+                <ReviewForm />
+            </BottomDrawer>
+            {/* <RBSheet
                 ref={refRBSheet}
                 closeOnDragDown={true}
                 closeOnPressMask={false}
@@ -133,7 +137,7 @@ const Review = (props) => {
                 }}
             >
                 <ReviewForm />
-            </RBSheet>
+            </RBSheet> */}
         </View>
     );
 };
