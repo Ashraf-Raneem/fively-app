@@ -1,7 +1,8 @@
-import { View, Image, Text, TouchableHighlight, TouchableOpacity } from "react-native";
+import { View, Image, Text, TouchableOpacity } from "react-native";
 import AuthenticatedLayout from "../../layout/AuthenticatedLayout";
 import tw from "twrnc";
 import { Entypo, AntDesign } from "@expo/vector-icons";
+import { useDispatch, useSelector } from "react-redux";
 import { AirbnbRating } from "react-native-ratings";
 import { gray, dark, primary, white } from "../../styles/colors";
 import DropdownDrawerButton from "../../components/dopdownDrawer/DropdownDrawerButton";
@@ -9,9 +10,17 @@ import Button from "../../components/button/Button";
 import Slick from "react-native-slick";
 import ProductCard from "../../components/products/ProductCard";
 import { productList } from "../../data/productList";
+import cartSlice from "../../redux/cart/Cart";
 
 const ProductDetails = ({ navigation }) => {
-    const { image, name, tag, rating, company, discountedPrice, price, liked, outOfStock, desc } = productList[4];
+    const dispatch = useDispatch();
+    const { cart, productDetail } = useSelector((state) => state);
+    const { addToCart, removeFromCart } = cartSlice.actions;
+
+    const isAdded = cart.cartList.findIndex((item) => item.id === id);
+    const { product } = productDetail;
+    const { image, name, id, rating, company, discountedPrice, price, liked, desc } = product;
+
     return (
         <AuthenticatedLayout>
             <View>
@@ -50,7 +59,11 @@ const ProductDetails = ({ navigation }) => {
                     </View>
                 </View>
                 <Text style={tw`text-[${gray}] text-sm my-4`}>{desc}</Text>
-                <Button name={"Add to Cart"} block />
+                {isAdded === -1 ? (
+                    <Button name={"Add to Cart"} block onPress={() => dispatch(addToCart(productList[4]))} />
+                ) : (
+                    <Button name={"Remove From Cart"} block onPress={() => dispatch(removeFromCart(productList[4]))} />
+                )}
                 <TouchableOpacity onPress={() => navigation.navigate("Review")}>
                     <View
                         style={tw`border-t border-b border-[${dark}] py-2 flex flex-row justify-between items-center`}

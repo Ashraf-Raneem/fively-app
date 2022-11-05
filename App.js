@@ -16,6 +16,8 @@ import Header from "./components/header/Header";
 import FilterScreen from "./screens/filter/Filter";
 import ProductDetails from "./screens/productDetails/ProductDetails";
 import { Entypo, Ionicons, FontAwesome, AntDesign, MaterialIcons } from "@expo/vector-icons";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -81,32 +83,36 @@ export default function App() {
     };
 
     return (
-        <NavigationContainer onReady={onLayoutRootView}>
-            <Stack.Navigator initialRouteName="Register">
-                <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
-                <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
-                <Stack.Screen name="Forgot_Password" component={ForgotPassword} options={{ headerShown: false }} />
-                <Stack.Screen name="Home" component={TabNavigator} options={{ headerShown: false }} />
-                <Stack.Screen
-                    name="Filter"
-                    component={FilterScreen}
-                    options={{ header: ({ navigation }) => <Header title={"Filter"} navigation={navigation} /> }}
-                />
-                <Stack.Screen
-                    name="ProductDetails"
-                    component={ProductDetails}
-                    options={{
-                        header: ({ navigation }) => <Header title={"Product Details"} navigation={navigation} />,
-                    }}
-                />
-                <Stack.Screen
-                    name="Review"
-                    component={Review}
-                    options={{
-                        header: ({ navigation }) => <Header title={"Ratings and Reviews"} navigation={navigation} />,
-                    }}
-                />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <Provider store={store}>
+            <NavigationContainer onReady={onLayoutRootView}>
+                <Stack.Navigator initialRouteName="Register">
+                    <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
+                    <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
+                    <Stack.Screen name="Forgot_Password" component={ForgotPassword} options={{ headerShown: false }} />
+                    <Stack.Screen name="Home" component={TabNavigator} options={{ headerShown: false }} />
+                    <Stack.Screen
+                        name="Filter"
+                        component={FilterScreen}
+                        options={{ header: ({ navigation }) => <Header title={"Filter"} navigation={navigation} /> }}
+                    />
+                    <Stack.Screen
+                        name="ProductDetails"
+                        component={ProductDetails}
+                        options={{
+                            header: ({ navigation }) => <Header title={"Product Details"} navigation={navigation} />,
+                        }}
+                    />
+                    <Stack.Screen
+                        name="Review"
+                        component={Review}
+                        options={{
+                            header: ({ navigation }) => (
+                                <Header title={"Ratings and Reviews"} navigation={navigation} />
+                            ),
+                        }}
+                    />
+                </Stack.Navigator>
+            </NavigationContainer>
+        </Provider>
     );
 }

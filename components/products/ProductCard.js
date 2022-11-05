@@ -1,15 +1,26 @@
 import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
+import { useDispatch } from "react-redux";
 import tw from "twrnc";
 import { gray, dark, primary, white } from "../../styles/colors";
 import { Entypo } from "@expo/vector-icons";
+import productDetailSlice from "../../redux/productDetail/ProductDetail";
 import { AirbnbRating } from "react-native-ratings";
 
 const ProductCard = (props) => {
+    const dispatch = useDispatch();
+
     const { product, navigation, cartButton } = props;
     const { image, name, tag, rating, company, discountedPrice, price, liked, outOfStock } = product;
+    const { setProduct } = productDetailSlice.actions;
+
     return (
         <View style={tw`w-[162px] my-4`}>
-            <TouchableOpacity onPress={() => navigation.navigate("ProductDetails")}>
+            <TouchableOpacity
+                onPress={() => {
+                    dispatch(setProduct(product));
+                    navigation.navigate("ProductDetails");
+                }}
+            >
                 <ImageBackground
                     source={image}
                     resizeMode="cover"
