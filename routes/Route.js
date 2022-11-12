@@ -6,6 +6,7 @@ import CoverMain from "../screens/landing/CoverMain";
 import Categories from "../screens/categories/Categories";
 import ProductList from "../screens/productList/ProductList";
 import Favourite from "../screens/favourite/Favourite";
+import Cart from "../screens/cart/Cart";
 
 const Stack = createNativeStackNavigator();
 
@@ -40,7 +41,7 @@ export const routes = {
     },
     Cart: {
         title: "Cart",
-        component: Categories,
+        component: Cart,
         icon: (focused) => <Entypo name="shopping-bag" size={20} color={focused ? primary : "white"} />,
         options: { headerShown: false },
         children: {},
