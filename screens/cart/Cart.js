@@ -1,34 +1,40 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import AuthenticatedLayout from "../../layout/AuthenticatedLayout";
 import tw from "twrnc";
-import { gray, white } from "../../styles/colors";
-import { useDispatch, useSelector } from "react-redux";
+import { dark, gray, primary, white } from "../../styles/colors";
+import { useSelector } from "react-redux";
 import CartCard from "../../components/cartCard/CartCard";
 import Button from "../../components/button/Button";
-import cartSlice from "../../redux/cart/Cart";
+import { AntDesign } from "@expo/vector-icons";
 
 const Cart = () => {
-    const dispatch = useDispatch();
-    const { getTotal } = cartSlice.actions;
-    const { cartList } = useSelector((store) => store.cart);
+    const { cart } = useSelector((state) => state);
+    const { cartList, subTotal } = cart;
 
     return (
         <AuthenticatedLayout>
-            <Text style={tw`text-2xl text-[${gray}]`}>My Bag</Text>
-            <View style={tw`flex flex-col`}>
-                {cartList.length > 0 ? (
-                    cartList.map((item) => <CartCard item={item} />)
-                ) : (
-                    <Text>No product added to cart yet!</Text>
-                )}
-            </View>
-            <View>
-                <View style={tw`w-full h-18 bg-[${gray}] rounded-xl`}>
-                    <Text>Add promo code</Text>
+            <View style={tw`flex-1 mt-8 mb-12 pt-8 mx-2`}>
+                <Text style={tw`text-4xl text-[${white}]`}>My Bag</Text>
+                <View style={tw`flex flex-col items-center justify-center my-4`}>
+                    {cartList.length > 0 ? (
+                        cartList.map((item) => <CartCard item={item} key={item.id} />)
+                    ) : (
+                        <View style={tw`py-4 items-center justify-center`}>
+                            <AntDesign name="shoppingcart" size={120} color={primary} />
+                            <Text style={tw`text-lg text-[${white}]`}>No product added to cart yet !</Text>
+                        </View>
+                    )}
                 </View>
-                <View style={tw`flex flex-row justify-between`}>
-                    <Text style={tw`text-[${gray}]`}>Total Amount</Text>
-                    <Text style={tw`text-[${white}]`}>{dispatch(getTotal())}</Text>
+                <View>
+                    <TouchableOpacity
+                        style={tw`w-full h-10 bg-[${dark}] rounded-xl flex items-start justify-center px-4`}
+                    >
+                        <Text style={tw`text-[${gray}]`}>Add promo code</Text>
+                    </TouchableOpacity>
+                    <View style={tw`flex flex-row justify-between items-center my-4`}>
+                        <Text style={tw`text-[${gray}] text-lg`}>Total Amount</Text>
+                        <Text style={tw`text-[${white}] text-2xl`}>${subTotal}</Text>
+                    </View>
                 </View>
                 <Button name={"Checkout"} block />
             </View>

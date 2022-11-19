@@ -16,10 +16,10 @@ const ProductDetails = ({ navigation }) => {
     const dispatch = useDispatch();
     const { cart, productDetail } = useSelector((state) => state);
     const { addToCart, removeFromCart } = cartSlice.actions;
-
-    const isAdded = cart.cartList.findIndex((item) => item.id === id);
     const { product } = productDetail;
     const { image, name, id, rating, company, discountedPrice, price, liked, desc } = product;
+
+    const isAdded = cart.cartList.findIndex((item) => item.id === id);
 
     return (
         <AuthenticatedLayout>
@@ -60,9 +60,9 @@ const ProductDetails = ({ navigation }) => {
                 </View>
                 <Text style={tw`text-[${gray}] text-sm my-4`}>{desc}</Text>
                 {isAdded === -1 ? (
-                    <Button name={"Add to Cart"} block onPress={() => dispatch(addToCart(productList[4]))} />
+                    <Button name={"Add to Cart"} block onPress={() => dispatch(addToCart(product))} />
                 ) : (
-                    <Button name={"Remove From Cart"} block onPress={() => dispatch(removeFromCart(productList[4]))} />
+                    <Button name={"Remove From Cart"} block onPress={() => dispatch(removeFromCart(product))} />
                 )}
                 <TouchableOpacity onPress={() => navigation.navigate("Review")}>
                     <View
