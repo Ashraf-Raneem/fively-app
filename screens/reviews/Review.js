@@ -6,27 +6,16 @@ import { AirbnbRating } from "react-native-ratings";
 import { reviewList } from "../../data/reviewList";
 import ReviewCard from "../../components/reviewCard/ReviewCard";
 import { MaterialIcons } from "@expo/vector-icons";
-import { useState } from "react";
 import { productList } from "../../data/productList";
 import { globalStyle } from "../../styles/global";
-import RBSheet from "react-native-raw-bottom-sheet";
 import { useRef } from "react";
 import ReviewForm from "../../components/forms/ReviewForm";
 import BottomDrawer from "../../components/bottomDrawer/BottomDrawer";
 
 const Review = (props) => {
     const { rating } = productList[0];
-    const [reviewDrawer, setReviewDrawer] = useState({ container: 0, open: false });
 
     const refRBSheet = useRef();
-
-    const toggleDrawer = () => {
-        if (reviewDrawer.open) {
-            setReviewDrawer({ container: 0, open: false });
-        } else {
-            setReviewDrawer({ container: 100, open: true });
-        }
-    };
 
     return (
         <View style={globalStyle}>
@@ -117,27 +106,6 @@ const Review = (props) => {
             <BottomDrawer drawerRef={refRBSheet} height={400}>
                 <ReviewForm />
             </BottomDrawer>
-            {/* <RBSheet
-                ref={refRBSheet}
-                closeOnDragDown={true}
-                closeOnPressMask={false}
-                height={400}
-                customStyles={{
-                    wrapper: {
-                        backgroundColor: "transparent",
-                    },
-                    container: {
-                        backgroundColor: dark,
-                        borderTopEndRadius: 24,
-                        borderTopLeftRadius: 24,
-                    },
-                    draggableIcon: {
-                        backgroundColor: gray,
-                    },
-                }}
-            >
-                <ReviewForm />
-            </RBSheet> */}
         </View>
     );
 };

@@ -37,7 +37,7 @@ const CartCard = ({ item }) => {
                             onPress={() => dispatch(decreaseFromCart(item))}
                             style={tw`w-10 h-10 rounded-full justify-center items-center bg-[${background}]`}
                         >
-                            <Text style={tw`text-[${gray}]`}> - </Text>
+                            <Text style={tw`text-[${gray}] text-lg`}> - </Text>
                         </TouchableHighlight>
                         <Text style={tw`mx-2 text-[${white}]`}>{quantity}</Text>
                         <TouchableHighlight

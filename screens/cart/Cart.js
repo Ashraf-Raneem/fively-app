@@ -6,10 +6,15 @@ import { useSelector } from "react-redux";
 import CartCard from "../../components/cartCard/CartCard";
 import Button from "../../components/button/Button";
 import { AntDesign } from "@expo/vector-icons";
+import BottomDrawer from "../../components/bottomDrawer/BottomDrawer";
+import { useRef, useState } from "react";
+import PromoCodeList from "../../components/promoCodeList/promoCodeList";
 
 const Cart = () => {
     const { cart } = useSelector((state) => state);
     const { cartList, subTotal } = cart;
+    const [promoCodeText, setPromoCodeText] = useState("");
+    const refRBSheet = useRef();
 
     return (
         <AuthenticatedLayout>
@@ -28,8 +33,11 @@ const Cart = () => {
                 <View>
                     <TouchableOpacity
                         style={tw`w-full h-10 bg-[${dark}] rounded-xl flex items-start justify-center px-4`}
+                        onPress={() => refRBSheet.current.open()}
                     >
-                        <Text style={tw`text-[${gray}]`}>Add promo code</Text>
+                        <Text style={tw`text-[${gray}]`}>
+                            {promoCodeText === "" ? "Add promo code" : promoCodeText}
+                        </Text>
                     </TouchableOpacity>
                     <View style={tw`flex flex-row justify-between items-center my-4`}>
                         <Text style={tw`text-[${gray}] text-lg`}>Total Amount</Text>
@@ -37,6 +45,9 @@ const Cart = () => {
                     </View>
                 </View>
                 <Button name={"Checkout"} block />
+                <BottomDrawer drawerRef={refRBSheet} height={430}>
+                    <PromoCodeList pres setOnPress={setPromoCodeText} promoCodeText={promoCodeText} />
+                </BottomDrawer>
             </View>
         </AuthenticatedLayout>
     );
