@@ -10,7 +10,7 @@ import BottomDrawer from "../../components/bottomDrawer/BottomDrawer";
 import { useRef, useState } from "react";
 import PromoCodeList from "../../components/promoCodeList/promoCodeList";
 
-const Cart = () => {
+const Cart = ({ navigation }) => {
     const { cart } = useSelector((state) => state);
     const { cartList, subTotal } = cart;
     const [promoCodeText, setPromoCodeText] = useState("");
@@ -44,7 +44,7 @@ const Cart = () => {
                         <Text style={tw`text-[${white}] text-2xl`}>${subTotal}</Text>
                     </View>
                 </View>
-                <Button name={"Checkout"} block />
+                <Button name={"Checkout"} block onPress={() => navigation.navigate("Checkout")} />
                 <BottomDrawer drawerRef={refRBSheet} height={430}>
                     <PromoCodeList pres setOnPress={setPromoCodeText} promoCodeText={promoCodeText} />
                 </BottomDrawer>

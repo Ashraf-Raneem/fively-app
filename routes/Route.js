@@ -7,6 +7,7 @@ import Categories from "../screens/categories/Categories";
 import ProductList from "../screens/productList/ProductList";
 import Favourite from "../screens/favourite/Favourite";
 import Cart from "../screens/cart/Cart";
+import Checkout from "../screens/checkout/Checkout";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,22 @@ const ShopStack = () => {
         >
             <Stack.Screen name="Categories" component={Categories} options={{ headerShown: true }} />
             <Stack.Screen name="ProductList" component={ProductList} options={{ headerShown: true }} />
+        </Stack.Navigator>
+    );
+};
+
+const CartStack = () => {
+    return (
+        <Stack.Navigator
+            initialRouteName="Cart"
+            screenOptions={{
+                header: ({ navigation, route, options }) => <Header title={route.name} navigation={navigation} />,
+            }}
+        >
+            <Stack.Screen name="Cart" component={Cart} options={{ headerShown: true }} />
+            <Stack.Screen name="Checkout" component={Checkout} options={{ headerShown: true }} />
+            <Stack.Screen name="ShippingAddresses" component={ProductList} options={{ headerShown: true }} />
+            <Stack.Screen name="AddShippingAddresses" component={ProductList} options={{ headerShown: true }} />
         </Stack.Navigator>
     );
 };
@@ -41,7 +58,7 @@ export const routes = {
     },
     Cart: {
         title: "Cart",
-        component: Cart,
+        component: CartStack,
         icon: (focused) => <Entypo name="shopping-bag" size={20} color={focused ? primary : "white"} />,
         options: { headerShown: false },
         children: {},
