@@ -8,6 +8,8 @@ import ProductList from "../screens/productList/ProductList";
 import Favourite from "../screens/favourite/Favourite";
 import Cart from "../screens/cart/Cart";
 import Checkout from "../screens/checkout/Checkout";
+import AddShippingAddress from "../screens/addShippingAddress/AddShippingAddress";
+import EditShippingAddress from "../screens/editShippingAddress/EditShippingAddress";
 
 const Stack = createNativeStackNavigator();
 
@@ -16,11 +18,17 @@ const ShopStack = () => {
         <Stack.Navigator
             initialRouteName="Categories"
             screenOptions={{
-                header: ({ navigation, route, options }) => <Header title={route.name} navigation={navigation} />,
+                header: ({ navigation, route, options }) => (
+                    <Header title={options.title ? options.title : route.name} navigation={navigation} />
+                ),
             }}
         >
             <Stack.Screen name="Categories" component={Categories} options={{ headerShown: true }} />
-            <Stack.Screen name="ProductList" component={ProductList} options={{ headerShown: true }} />
+            <Stack.Screen
+                name="ProductList"
+                component={ProductList}
+                options={{ headerShown: true, title: "Product List" }}
+            />
         </Stack.Navigator>
     );
 };
@@ -30,13 +38,23 @@ const CartStack = () => {
         <Stack.Navigator
             initialRouteName="Cart"
             screenOptions={{
-                header: ({ navigation, route, options }) => <Header title={route.name} navigation={navigation} />,
+                header: ({ navigation, route, options }) => (
+                    <Header title={options.title ? options.title : route.name} navigation={navigation} />
+                ),
             }}
         >
             <Stack.Screen name="Cart" component={Cart} options={{ headerShown: true }} />
             <Stack.Screen name="Checkout" component={Checkout} options={{ headerShown: true }} />
-            <Stack.Screen name="ShippingAddresses" component={ProductList} options={{ headerShown: true }} />
-            <Stack.Screen name="AddShippingAddresses" component={ProductList} options={{ headerShown: true }} />
+            <Stack.Screen
+                name="addShippingAddresses"
+                component={AddShippingAddress}
+                options={{ headerShown: true, title: "Add Shipping Addresses" }}
+            />
+            <Stack.Screen
+                name="editShippingAddress"
+                component={EditShippingAddress}
+                options={{ headerShown: true, title: "Edit Shipping Address" }}
+            />
         </Stack.Navigator>
     );
 };

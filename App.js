@@ -18,6 +18,7 @@ import ProductDetails from "./screens/productDetails/ProductDetails";
 import { Entypo, Ionicons, FontAwesome, AntDesign, MaterialIcons } from "@expo/vector-icons";
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import ShippingAddresses from "./screens/shippingAddresses/ShippingAddress";
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
@@ -109,6 +110,13 @@ export default function App() {
                             header: ({ navigation }) => (
                                 <Header title={"Ratings and Reviews"} navigation={navigation} />
                             ),
+                        }}
+                    />
+                    <Stack.Screen
+                        name="shippingAddresses"
+                        component={ShippingAddresses}
+                        options={{
+                            header: ({ navigation }) => <Header title={"Shipping Addresses"} navigation={navigation} />,
                         }}
                     />
                 </Stack.Navigator>
