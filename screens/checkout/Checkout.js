@@ -1,10 +1,9 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity, TextInput } from "react-native";
 import AuthenticatedLayout from "../../layout/AuthenticatedLayout";
 import tw from "twrnc";
 import { dark, gray, hot, white } from "../../styles/colors";
 import DeliveryMethods from "../../components/deliveryMothods/DeliveryMethods";
 import Button from "../../components/button/Button";
-// import { CreditCardInput } from "react-native-credit-card-input";
 import { useSelector } from "react-redux";
 
 const Checkout = ({ navigation }) => {
@@ -28,8 +27,11 @@ const Checkout = ({ navigation }) => {
                     </View>
                 </View>
                 <View>
-                    <Text style={tw`text-[${white}] text-lg`}>Payment</Text>
-                    {/* <CreditCardInput /> */}
+                    <Text style={tw`text-[${white}] text-lg`}>Card Information</Text>
+                    <TextInput
+                        textContentType="creditCardNumber"
+                        style={tw`p-2 text-white my-2 border border-white rounded`}
+                    />
                 </View>
                 <View>
                     <Text style={tw`text-[${white}] text-lg`}>Delivery Methods</Text>
