@@ -49,7 +49,7 @@ const Checkout = ({ navigation }) => {
                     <Text style={tw`text-[${gray}] text-lg`}>Summary</Text>
                     <Text style={tw`text-[${white}] text-lg`}>${subTotal + 15}</Text>
                 </View>
-                <Button name={"Submit Order"} block />
+                <Button name={"Submit Order"} block onPress={() => navigation.navigate("checkoutSuccess")} />
             </View>
         </AuthenticatedLayout>
     );

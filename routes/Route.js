@@ -10,6 +10,7 @@ import Cart from "../screens/cart/Cart";
 import Checkout from "../screens/checkout/Checkout";
 import AddShippingAddress from "../screens/addShippingAddress/AddShippingAddress";
 import EditShippingAddress from "../screens/editShippingAddress/EditShippingAddress";
+import CheckoutSuccess from "../screens/checkoutSuccess/CheckoutSuccess";
 
 const Stack = createNativeStackNavigator();
 
@@ -55,6 +56,7 @@ const CartStack = () => {
                 component={EditShippingAddress}
                 options={{ headerShown: true, title: "Edit Shipping Address" }}
             />
+            <Stack.Screen name="checkoutSuccess" component={CheckoutSuccess} options={{ headerShown: false }} />
         </Stack.Navigator>
     );
 };
