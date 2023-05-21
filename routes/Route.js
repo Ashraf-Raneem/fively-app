@@ -11,6 +11,7 @@ import Checkout from "../screens/checkout/Checkout";
 import AddShippingAddress from "../screens/addShippingAddress/AddShippingAddress";
 import EditShippingAddress from "../screens/editShippingAddress/EditShippingAddress";
 import CheckoutSuccess from "../screens/checkoutSuccess/CheckoutSuccess";
+import Profile from "../screens/profile/Profile";
 
 const Stack = createNativeStackNavigator();
 
@@ -25,6 +26,26 @@ const ShopStack = () => {
             }}
         >
             <Stack.Screen name="Categories" component={Categories} options={{ headerShown: true }} />
+            <Stack.Screen
+                name="ProductList"
+                component={ProductList}
+                options={{ headerShown: true, title: "Product List" }}
+            />
+        </Stack.Navigator>
+    );
+};
+
+export const ProfileStack = () => {
+    return (
+        <Stack.Navigator
+            initialRouteName="Profile"
+            screenOptions={{
+                header: ({ navigation, route, options }) => (
+                    <Header title={options.title ? options.title : route.name} navigation={navigation} />
+                ),
+            }}
+        >
+            <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
             <Stack.Screen
                 name="ProductList"
                 component={ProductList}
@@ -95,7 +116,7 @@ export const routes = {
     },
     Account: {
         title: "Account",
-        component: Categories,
+        component: ProfileStack,
         icon: (focused) => <MaterialCommunityIcons name="account" size={20} color={focused ? primary : "white"} />,
         options: { headerShown: false },
         children: {},

@@ -21,7 +21,7 @@
     "expo-status-bar": "~1.4.0",
     "patch-package": "^6.5.0",
     "react": "18.0.0",
-    "react-native": "0.69.6",
+    "react-native": "0.69.9",
     "react-native-bottom-drawer-view": "^1.0.3",
     "react-native-credit-card-input-plus": "^0.4.4",
     "react-native-ratings": "^8.1.0",
