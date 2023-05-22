@@ -20,7 +20,10 @@ const Profile = ({ navigation }) => {
                     </View>
                 </View>
                 <View style={tw`flex flex-col mt-8`}>
-                    <TouchableOpacity style={tw`flex flex-row justify-between items-center my-4`}>
+                    <TouchableOpacity
+                        style={tw`flex flex-row justify-between items-center my-4`}
+                        onPress={() => navigation.navigate("Order")}
+                    >
                         <View>
                             <Text style={tw`text-lg text-white`}>My Orders</Text>
                             <Text style={tw`text-sm text-[${gray}]`}>You have 12 pending orders</Text>
