@@ -1,9 +1,14 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import tw from "twrnc";
 import { dark, gray } from "../../styles/colors";
+import { useDispatch } from "react-redux";
+import orderDetailSlice from "../../redux/orderDetail/OrderDetail";
 
-const OrderCard = ({ item }) => {
-    const { order, tracking, quantity, status, amount, date } = item;
+const OrderCard = ({ item, navigation }) => {
+    const { order, tracking, items, status, date } = item;
+    const dispatch = useDispatch();
+    const { setOrderDetail } = orderDetailSlice.actions;
+    let totalAmount = items.reduce((sum, item) => sum + item.price, 0);
     return (
         <View style={tw`h-[160px] w-full flex bg-[${dark}] my-4 rounded-lg p-4`}>
             <View style={tw`flex flex-row justify-between items-center`}>
@@ -17,14 +22,20 @@ const OrderCard = ({ item }) => {
             <View style={tw`flex flex-row justify-between mt-2 items-center`}>
                 <Text style={tw`text-white`}>
                     <Text style={tw`text-[${gray}]`}>Quantity: </Text>
-                    {quantity}
+                    {items.length}
                 </Text>
                 <Text style={tw`text-white`}>
-                    <Text style={tw`text-[${gray}]`}>Total Amount: </Text>$ {amount}
+                    <Text style={tw`text-[${gray}]`}>Total Amount: </Text>$ {totalAmount.toFixed(2)}
                 </Text>
             </View>
             <View style={tw`flex flex-row justify-between mt-4 items-center`}>
-                <TouchableOpacity style={tw`flex justify-center items-center p-2 border border-white rounded-lg`}>
+                <TouchableOpacity
+                    onPress={() => {
+                        dispatch(setOrderDetail(item));
+                        navigation.navigate("OrderDetail");
+                    }}
+                    style={tw`flex justify-center items-center p-2 border border-white rounded-lg`}
+                >
                     <Text style={tw`text-white`}>Details</Text>
                 </TouchableOpacity>
                 <Text

@@ -13,6 +13,7 @@ import EditShippingAddress from "../screens/editShippingAddress/EditShippingAddr
 import CheckoutSuccess from "../screens/checkoutSuccess/CheckoutSuccess";
 import Profile from "../screens/profile/Profile";
 import OrderScreen from "../screens/order/Order";
+import OrderDetails from "../screens/orderDetails/OrderDetails";
 
 const Stack = createNativeStackNavigator();
 
@@ -48,6 +49,11 @@ export const ProfileStack = () => {
         >
             <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
             <Stack.Screen name="Order" component={OrderScreen} options={{ headerShown: true, title: "Orders" }} />
+            <Stack.Screen
+                name="OrderDetail"
+                component={OrderDetails}
+                options={{ headerShown: true, title: "Orders Detail" }}
+            />
         </Stack.Navigator>
     );
 };
