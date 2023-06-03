@@ -60,7 +60,10 @@ const Profile = ({ navigation }) => {
                         </View>
                         <AntDesign name="right" size={24} color={gray} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={tw`flex flex-row justify-between items-center my-4`}>
+                    <TouchableOpacity
+                        style={tw`flex flex-row justify-between items-center my-4`}
+                        onPress={() => navigation.navigate("Settings")}
+                    >
                         <View>
                             <Text style={tw`text-lg text-white`}>Settings</Text>
                             <Text style={tw`text-sm text-[${gray}]`}>Notification, Passwords etc.</Text>

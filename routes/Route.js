@@ -14,6 +14,7 @@ import CheckoutSuccess from "../screens/checkoutSuccess/CheckoutSuccess";
 import Profile from "../screens/profile/Profile";
 import OrderScreen from "../screens/order/Order";
 import OrderDetails from "../screens/orderDetails/OrderDetails";
+import Settings from "../screens/settings/Settings";
 
 const Stack = createNativeStackNavigator();
 
@@ -54,6 +55,7 @@ export const ProfileStack = () => {
                 component={OrderDetails}
                 options={{ headerShown: true, title: "Orders Detail" }}
             />
+            <Stack.Screen name="Settings" component={Settings} options={{ headerShown: true, title: "Settings" }} />
         </Stack.Navigator>
     );
 };
