@@ -1,7 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity, Switch } from "react-native";
 import AuthenticatedLayout from "../../layout/AuthenticatedLayout";
 import tw from "twrnc";
-import { background, dark, gray } from "../../styles/colors";
+import { background, dark, gray, hot, primary } from "../../styles/colors";
 import { useState } from "react";
 import BottomDrawer from "../../components/bottomDrawer/BottomDrawer";
 import Button from "../../components/button/Button";
@@ -57,30 +57,30 @@ const Settings = () => {
                     <View style={tw`flex flex-row justify-between items-center`}>
                         <Text style={tw`text-white text-sm`}>Sales</Text>
                         <Switch
-                            trackColor={{ false: "#767577", true: "#81b0ff" }}
-                            thumbColor={notification.sales ? "#f5dd4b" : "#f4f3f4"}
+                            trackColor={{ false: "#767577", true: primary }}
+                            thumbColor={hot}
                             ios_backgroundColor="#3e3e3e"
-                            onChange={(e) => toggleSwitch("sales", e)}
+                            onValueChange={(e) => toggleSwitch("sales", e)}
                             value={notification.sales}
                         />
                     </View>
                     <View style={tw`flex flex-row justify-between items-center`}>
                         <Text style={tw`text-white text-sm`}>New Arrivals</Text>
                         <Switch
-                            trackColor={{ false: "#767577", true: "#81b0ff" }}
-                            thumbColor={notification.newArrivals ? "#f5dd4b" : "#f4f3f4"}
+                            trackColor={{ false: "#767577", true: primary }}
+                            thumbColor={hot}
                             ios_backgroundColor="#3e3e3e"
-                            onChange={(e) => toggleSwitch("newArrivals", e)}
+                            onValueChange={(e) => toggleSwitch("newArrivals", e)}
                             value={notification.newArrivals}
                         />
                     </View>
                     <View style={tw`flex flex-row justify-between items-center`}>
                         <Text style={tw`text-white text-sm`}>Delivery Status Change</Text>
                         <Switch
-                            trackColor={{ false: "#767577", true: "#81b0ff" }}
-                            thumbColor={notification.deliveryStatusChange ? "#f5dd4b" : "#f4f3f4"}
+                            trackColor={{ false: "#767577", true: primary }}
+                            thumbColor={hot}
                             ios_backgroundColor="#3e3e3e"
-                            onChange={(e) => toggleSwitch("deliveryStatusChange", e)}
+                            onValueChange={(e) => toggleSwitch("deliveryStatusChange", e)}
                             value={notification.deliveryStatusChange}
                         />
                     </View>

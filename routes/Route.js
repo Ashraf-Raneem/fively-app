@@ -10,6 +10,7 @@ import Cart from "../screens/cart/Cart";
 import Checkout from "../screens/checkout/Checkout";
 import AddShippingAddress from "../screens/addShippingAddress/AddShippingAddress";
 import EditShippingAddress from "../screens/editShippingAddress/EditShippingAddress";
+import ShippingAddresses from "../screens/shippingAddresses/ShippingAddress";
 import CheckoutSuccess from "../screens/checkoutSuccess/CheckoutSuccess";
 import Profile from "../screens/profile/Profile";
 import OrderScreen from "../screens/order/Order";
@@ -56,6 +57,11 @@ export const ProfileStack = () => {
                 options={{ headerShown: true, title: "Orders Detail" }}
             />
             <Stack.Screen name="Settings" component={Settings} options={{ headerShown: true, title: "Settings" }} />
+            {/* <Stack.Screen
+                name="shippingAddresses"
+                component={ShippingAddresses}
+                options={{ headerShown: true, title: "All Shipping Addresses" }}
+            /> */}
         </Stack.Navigator>
     );
 };

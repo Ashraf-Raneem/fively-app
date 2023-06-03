@@ -30,7 +30,10 @@ const Profile = ({ navigation }) => {
                         </View>
                         <AntDesign name="right" size={24} color={gray} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={tw`flex flex-row justify-between items-center my-4`}>
+                    <TouchableOpacity
+                        onPress={() => navigation.navigate("shippingAddresses")}
+                        style={tw`flex flex-row justify-between items-center my-4`}
+                    >
                         <View>
                             <Text style={tw`text-lg text-white`}>Shipping Addresses</Text>
                             <Text style={tw`text-sm text-[${gray}]`}>
@@ -39,27 +42,27 @@ const Profile = ({ navigation }) => {
                         </View>
                         <AntDesign name="right" size={24} color={gray} />
                     </TouchableOpacity>
-                    <TouchableOpacity style={tw`flex flex-row justify-between items-center my-4`}>
+                    <View style={tw`flex flex-row justify-between items-center my-4`}>
                         <View>
                             <Text style={tw`text-lg text-white`}>Payment Methods</Text>
                             <Text style={tw`text-sm text-[${gray}]`}>Update Payment Method</Text>
                         </View>
                         <AntDesign name="right" size={24} color={gray} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={tw`flex flex-row justify-between items-center my-4`}>
+                    </View>
+                    <View style={tw`flex flex-row justify-between items-center my-4`}>
                         <View>
                             <Text style={tw`text-lg text-white`}>Activity Log</Text>
                             <Text style={tw`text-sm text-[${gray}]`}>Activity</Text>
                         </View>
                         <AntDesign name="right" size={24} color={gray} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={tw`flex flex-row justify-between items-center my-4`}>
+                    </View>
+                    <View style={tw`flex flex-row justify-between items-center my-4`}>
                         <View>
                             <Text style={tw`text-lg text-white`}>Promocodes</Text>
                             <Text style={tw`text-sm text-[${gray}]`}>Add or remove promocodes</Text>
                         </View>
                         <AntDesign name="right" size={24} color={gray} />
-                    </TouchableOpacity>
+                    </View>
                     <TouchableOpacity
                         style={tw`flex flex-row justify-between items-center my-4`}
                         onPress={() => navigation.navigate("Settings")}

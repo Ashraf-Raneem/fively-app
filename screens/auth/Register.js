@@ -4,11 +4,32 @@ import { globalPublicStyles, globalStyle } from "../../styles/global";
 import tw from "twrnc";
 import { Ionicons, Entypo, MaterialIcons, AntDesign, FontAwesome } from "@expo/vector-icons";
 import Button from "../../components/button/Button";
+import { useState } from "react";
 import { dark, error, primary, success } from "../../styles/colors";
 
+const fields = {
+    email: "",
+    name: "",
+    password: "",
+};
+
 const RegisterScreen = ({ navigation }) => {
+    const [loader, setLoader] = useState(false);
+    const [form, setForm] = useState(fields);
+
+    const authCheck = () => {
+        if (form.email !== "" || form.name !== "" || form.password !== "") {
+            Alert.alert("Account Created Successfully", "Proceed to login");
+            navigation.navigate("Login");
+        } else {
+            Alert.alert("All the fields needs to be filled", "Try again please");
+        }
+        setLoader(false);
+    };
+
     const onSubmit = () => {
-        Alert.alert("Pressed Login");
+        setLoader(true);
+        setTimeout(() => authCheck(), 1000);
     };
 
     const SuccessIcon = <AntDesign name="check" size={24} color={success} />;
@@ -26,6 +47,8 @@ const RegisterScreen = ({ navigation }) => {
                         style={tw`my-2 text-white w-11/12 py-2`}
                         placeholder="Name"
                         placeholderTextColor="white"
+                        value={form.name}
+                        onChangeText={(value) => setForm({ ...form, name: value })}
                     />
                 </View>
                 <View style={tw`flex flex-row justify-between items-center bg-[${dark}] px-4 my-2 rounded w-9/12`}>
@@ -33,6 +56,8 @@ const RegisterScreen = ({ navigation }) => {
                         style={tw`my-2 text-white w-11/12 py-2`}
                         placeholder="Email"
                         placeholderTextColor="white"
+                        value={form.email}
+                        onChangeText={(value) => setForm({ ...form, email: value })}
                     />
                 </View>
                 <View style={tw`flex flex-row justify-between bg-[${dark}] items-center px-4 my-2 rounded w-9/12`}>
@@ -41,6 +66,8 @@ const RegisterScreen = ({ navigation }) => {
                         textContentType="password"
                         placeholder="Password"
                         placeholderTextColor="white"
+                        value={form.password}
+                        onChangeText={(value) => setForm({ ...form, password: value })}
                     />
                 </View>
                 <View style={tw`flex flex-row items-center text-right self-end mr-12`}>
@@ -49,7 +76,7 @@ const RegisterScreen = ({ navigation }) => {
                     </Text>
                     <MaterialIcons name="arrow-right-alt" size={24} color={primary} />
                 </View>
-                <Button name={"Register"} onPress={onSubmit} />
+                <Button name={"Register"} loader={loader} loaderText={"Registering"} onPress={onSubmit} />
             </View>
             <Text style={tw`text-white mt-12 text-center mb-8`}>Or Register with social account</Text>
             <View style={tw`flex flex-row justify-center mb-22`}>

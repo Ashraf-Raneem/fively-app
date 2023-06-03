@@ -86,7 +86,7 @@ export default function App() {
     return (
         <Provider store={store}>
             <NavigationContainer onReady={onLayoutRootView}>
-                <Stack.Navigator initialRouteName="Register">
+                <Stack.Navigator initialRouteName="Login">
                     <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
                     <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
                     <Stack.Screen name="Forgot_Password" component={ForgotPassword} options={{ headerShown: false }} />
