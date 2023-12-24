@@ -15,7 +15,7 @@ Welcome to the React Native eCommerce project! This project is a mobile applicat
 
 This is a React Native eCommerce project aims to provide a mobile platform for buying. In the application users can browse products, add them to the cart, and make purchases. The design of the app is based on the templates provided by 5ly.co in figma. The application has several internal systems such as authentication, navigation, pagination and payment system.
 
-![Project_Cover] assets/project_cover.png
+<img src="./assets/project_cover.png" alt="Project Cover" width="300" height="200">
 
 ## Prerequisites
 
@@ -46,52 +46,54 @@ Once any of the above mentioned methods are running use `npm start` to run the a
 
 ## Folder Structure
 
+```bash
 /assets
-/delivery-mode
-/fonts
-/images
+    /delivery-mode
+    /fonts
+    /images
 /components
-/authHeader
-/banner
-/bottomDrawer
-/button
-/cartCard
-/devliveryMethods
-/dropdownDrawer
-/filter
-/forms
-/header
-/orderCard
-/products
-/promoCodeList
-/ratingbar
-/reviewCard
+    /authHeader
+    /banner
+    /bottomDrawer
+    /button
+    /cartCard
+    /devliveryMethods
+    /dropdownDrawer
+    /filter
+    /forms
+    /header
+    /orderCard
+    /products
+    /promoCodeList
+    /ratingbar
+    /reviewCard
 /data
 /layout
 /redux
-/address
-/cart
-/orderDetail
-/productDetail
+    /address
+    /cart
+    /orderDetail
+    /productDetail
 /routes
 /screens
-/auth
-/cart
-/categories
-/checkoutSuccess
-/editShippingAddress
-/favourite
-/filter
-/landing
-/order
-/orderDetails
-/productDetails
-/productList
-/profile
-/reviews
-/settings
-/shippingAddresses
+    /auth
+    /cart
+    /categories
+    /checkoutSuccess
+    /editShippingAddress
+    /favourite
+    /filter
+    /landing
+    /order
+    /orderDetails
+    /productDetails
+    /productList
+    /profile
+    /reviews
+    /settings
+    /shippingAddresses
 /styles
+```
 
 ## Dependencies
 
