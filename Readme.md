@@ -15,7 +15,7 @@ Welcome to the React Native eCommerce project! This project is a mobile applicat
 
 This is a React Native eCommerce project aims to provide a mobile platform for buying. In the application users can browse products, add them to the cart, and make purchases. The design of the app is based on the templates provided by 5ly.co in figma. The application has several internal systems such as authentication, navigation, pagination and payment system.
 
-<img src="./assets/project_cover.png" alt="Project Cover" width="300" height="200">
+<img src="./assets/project_cover.png" alt="Project Cover" width="450" height="450">
 
 ## Prerequisites
 
