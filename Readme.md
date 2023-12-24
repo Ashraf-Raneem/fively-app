@@ -1,6 +1,6 @@
-# React Native eCommerce Project
+# Fively App
 
-Welcome to the React Native eCommerce project! This project is a mobile application built with React Native for creating an eCommerce platform.
+Welcome to the Fively Ecommerce app! This project is a mobile application built with React Native for creating an eCommerce platform.
 
 ## Table of Contents
 
